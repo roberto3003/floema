@@ -60,9 +60,9 @@ module.exports = {
 		test: /\.scss$/,
 		use: [
 		  {loader: MiniCssExtractPlugin.loader,
-		  options: {
-			publicPath: ''
-		  }
+			options: {
+			  publicPath: ''
+			}
 		  },
 		  {
 			loader: 'css-loader'
@@ -78,6 +78,11 @@ module.exports = {
 	  {
 		test: /\.(jpe?g|png|gif|svg|wof2?|fnt|webp)$/,
 		loader: 'file-loader',
+		options: {
+		 //name (file) {
+		//	return '[hash]'
+		 // }
+		}
 	  }
 	]
   }
