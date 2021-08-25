@@ -12,4 +12,8 @@ const dirApp = path.join(__dirname, 'app')
 const dirAssets = path.join(__dirname, 'assets')
 const dirStyles = path.join(__dirname, 'styles')
 
-console.log(dirApp, dirAssets, dirStyles)
+module.exports = {
+  entry: [
+	path.join(dirApp, 'index.js')
+  ]
+}
