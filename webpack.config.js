@@ -2,7 +2,7 @@ const path = require('path')
 
 const webpack = require('webpack')
 
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
@@ -34,49 +34,51 @@ module.exports = {
   plugins: [
 	new webpack.DefinePlugin({
 	  IS_DEVELOPMENT
-	})
-	new CopyWebpackPlugin({
+	}),
+	new CopyPlugin({
 	  patterns: [
 		{
 		  from: './shared',
 		  to: ''
 		}
 	  ]
+	}),
+	new MiniCssExtractPlugin({
+	  filename: '[name].css',
+	  chunkFilename: '[id].css'
 	})
-new MiniCssExtractPlugin({
-  filename: '[name].css',
-  chunkFilename: '[id].css'
-})
   ],
-module: {
-  rules: [
-	{
-	  test: /\.js$/,
-	  use: {
-		loader: 'babel-loader'
+  module: {
+	rules: [
+	  {
+		test: /\.js$/,
+		use: {
+		  loader: 'babel-loader'
+		}
 	  },
 	  {
 		test: /\.scss$/,
 		use: [
-		  loader: MiniCssExtractPlugin.loader,
+		  {loader: MiniCssExtractPlugin.loader,
 		  options: {
 			publicPath: ''
 		  }
-		},
-		{
-		  loader: 'css-loader'
-		},
-		{
-		  loader: 'postcss-loader'
-		},
-		{
-		  loader: 'sass-loader'
-		}
-	  ]
-	},
-	{
-	  test: /\.(jpe?g|png|gif|svg|wof2?|fnt|webp)$/,
-	}
-  ]
-	}
+		  },
+		  {
+			loader: 'css-loader'
+		  },
+		  {
+			loader: 'postcss-loader'
+		  },
+		  {
+			loader: 'sass-loader'
+		  }
+		]
+	  },
+	  {
+		test: /\.(jpe?g|png|gif|svg|wof2?|fnt|webp)$/,
+		loader: 'file-loader',
+	  }
+	]
+  }
 }
