@@ -75,6 +75,7 @@ module.exports = {
 		test: /\.(jpe?g|png|gif|svg|wof2?|fnt|webp)$/,
 		loader: 'file-loader',
 		options: {
+		 outputPath: 'images',
 		 name (file) {
 			return '[hash]'
 		  }
