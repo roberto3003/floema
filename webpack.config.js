@@ -5,7 +5,7 @@ const webpack = require('webpack')
 const CopyPlugin = require('copy-webpack-plugin')
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-
+const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const IS_DEVELOPMENT = process.env.NODE_ENV === 'dev'
 
 const dirApp = path.join(__dirname, 'app')
@@ -75,7 +75,6 @@ module.exports = {
 		test: /\.(jpe?g|png|gif|svg|wof2?|fnt|webp)$/,
 		loader: 'file-loader',
 		options: {
-		 outputPath: 'images',
 		 name (file) {
 			return '[hash]'
 		  }
