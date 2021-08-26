@@ -9,7 +9,6 @@
     "start": "npm run development"
   },
   "author": "roberto3003",
-  "license": "ISC",
   "devDependencies": {
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
